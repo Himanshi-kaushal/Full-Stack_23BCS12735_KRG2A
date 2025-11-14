@@ -1,0 +1,72 @@
+{
+  "users": [
+    {
+      "name": "Rahul Kumar",
+      "email": "rahul@example.com",
+      "passwordHash": "demo-hash-123",
+      "role": "provider",
+      "contact": "8899001122"
+    },
+    {
+      "name": "Aisha Sharma",
+      "email": "aisha@example.com",
+      "passwordHash": "demo-hash-234",
+      "role": "student",
+      "contact": "9988776655"
+    }
+  ],
+  "flats": [
+    {
+      "title": "Cozy 1BHK near College Gate",
+      "ownerEmail": "rahul@example.com",
+      "location": "College Road",
+      "price": 6000,
+      "bedrooms": 1,
+      "description": "Bright 1BHK with balcony, close to college buses.",
+      "images": ["/images/flat1.jpg"],
+      "tags": ["1BHK", "near-college"],
+      "contact": "8899001122"
+    },
+    {
+      "title": "Spacious 2BHK for students",
+      "ownerEmail": "rahul@example.com",
+      "location": "North Campus",
+      "price": 9500,
+      "bedrooms": 2,
+      "description": "Shared 2BHK suitable for 2 students.",
+      "images": ["/images/flat2.jpg"],
+      "tags": ["2BHK", "shared"],
+      "contact": "8899001122"
+    }
+  ],
+  "tiffins": [
+    {
+      "name": "Homely Tiffins",
+      "ownerEmail": "rahul@example.com",
+      "pricePerMeal": 45,
+      "cuisine": "Indian",
+      "menuSample": ["Dal", "Roti", "Sabzi"],
+      "contact": "8899001122",
+      "address": "College Road"
+    }
+  ],
+  "rentals": [
+    {
+      "vehicleType": "Bike",
+      "ownerEmail": "rahul@example.com",
+      "rentPerDay": 150,
+      "location": "College Road",
+      "contact": "8899001122",
+      "image": "/images/bike1.jpg"
+    }
+  ],
+  "reviews": [
+    {
+      "listingType": "Flat",
+      "listingTitle": "Cozy 1BHK near College Gate",
+      "userEmail": "aisha@example.com",
+      "rating": 5,
+      "comment": "Great place and affordable!"
+    }
+  ]
+}
