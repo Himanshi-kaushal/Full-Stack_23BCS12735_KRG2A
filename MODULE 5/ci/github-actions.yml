@@ -1,0 +1,49 @@
+# GitHub Actions workflow: runs tests for frontend & backend (example)
+name: CI - CampusEase
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  frontend-tests:
+    runs-on: ubuntu-latest
+    name: Frontend Tests
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install frontend deps
+        run: |
+          cd campusease-frontend
+          npm ci
+      - name: Run frontend tests
+        run: |
+          cd campusease-frontend
+          npm test -- --watchAll=false
+
+  backend-tests:
+    runs-on: ubuntu-latest
+    name: Backend Tests
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install backend deps
+        run: |
+          cd campusease-backend
+          npm ci
+      - name: Run backend smoke tests
+        env:
+          BACKEND_URL: http://localhost:5000
+        run: |
+          # Optionally run server in background (if server start script exists)
+          cd campusease-backend
+          npm run dev & sleep 3
+          node ../module-5-testing-deployment/tests/backend/api-smoke.test.js
