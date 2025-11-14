@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: module-5-testing-deployment/docker/Dockerfile.backend
+    image: campusease-backend:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/campusease
+    depends_on:
+      - mongodb
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: module-5-testing-deployment/docker/Dockerfile.frontend
+    image: campusease-frontend:latest
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  mongodb:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - campusease_mongo_data:/data/db
+
+volumes:
+  campusease_mongo_data:
