@@ -1,0 +1,16 @@
+# Dockerfile for backend (Node.js + Express)
+FROM node:18-alpine
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY campusease-backend/package*.json ./
+RUN npm ci --only=production
+
+# Bundle app source
+COPY campusease-backend/ .
+
+# Expose port and run
+EXPOSE 5000
+CMD ["node", "server.js"]
