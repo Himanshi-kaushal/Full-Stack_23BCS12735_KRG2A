@@ -1,0 +1,49 @@
+{
+  "info": {
+    "name": "CampusEase Integration",
+    "_postman_id": "campusease-integration",
+    "description": "Basic API calls for CampusEase integration testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Flats",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BACKEND_URL}}/api/flats",
+          "host": ["{{BACKEND_URL}}"],
+          "path": ["api","flats"]
+        }
+      }
+    },
+    {
+      "name": "Get Tiffins",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BACKEND_URL}}/api/tiffins",
+          "host": ["{{BACKEND_URL}}"],
+          "path": ["api","tiffins"]
+        }
+      }
+    },
+    {
+      "name": "Get Rentals",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BACKEND_URL}}/api/rentals",
+          "host": ["{{BACKEND_URL}}"],
+          "path": ["api","rentals"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "BACKEND_URL", "value": "http://localhost:5000" }
+  ]
+}
