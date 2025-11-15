@@ -1,0 +1,71 @@
+<!doctype html>
+.msg { margin-top:12px; padding:10px; border-radius:6px; }
+.msg.success { background:#e6ffed; border:1px solid #b8f0c8; }
+.msg.error { background:#ffecec; border:1px solid #f1b8b8; }
+</style>
+</head>
+<body>
+<h1>Create a Post</h1>
+
+
+<form id="postForm">
+<label for="title">Title</label>
+<input id="title" name="title" required />
+
+
+<label for="body">Body</label>
+<textarea id="body" name="body" required></textarea>
+
+
+<button type="submit">Submit</button>
+</form>
+
+
+<div id="result" aria-live="polite"></div>
+
+
+<script>
+const form = document.getElementById('postForm');
+const result = document.getElementById('result');
+
+
+form.addEventListener('submit', async (e) => {
+e.preventDefault();
+result.textContent = '';
+result.className = '';
+
+
+const title = document.getElementById('title').value.trim();
+const body = document.getElementById('body').value.trim();
+
+
+try {
+const res = await fetch('/posts', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ title, body })
+});
+
+
+if (!res.ok) {
+const err = await res.json();
+throw new Error(err.error || 'Request failed');
+}
+
+
+const data = await res.json();
+
+
+result.textContent = `Post submitted successfully! (ID: ${data.post.id})`;
+result.className = 'msg success';
+form.reset();
+
+
+} catch (err) {
+result.textContent = 'Error: ' + err.message;
+result.className = 'msg error';
+}
+});
+</script>
+</body>
+</html>
